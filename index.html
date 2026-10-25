@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Portofolio Clara Claudia Surbakti, mahasiswa Pendidikan dan Pengajaran Anak Usia Dini dengan pengalaman magang di taman kanak-kanak, desain busana, menjahit, dan layanan pelanggan.">
+  <meta name="theme-color" content="#dceef8">
+  <title>Clara Claudia Surbakti | Portofolio</title>
+  <style>
+    :root {
+      --ink: #243746;
+      --navy: #24445a;
+      --blue: #397b91;
+      --teal: #cdebe5;
+      --mint: #e7f4ef;
+      --peach: #ffcfb8;
+      --coral: #df795f;
+      --lilac: #e9e2f6;
+      --cream: #f8fbfd;
+      --paper: #ffffff;
+      --muted: #5e727e;
+      --line: #dce7ec;
+      --shadow: 0 16px 44px rgba(36, 68, 90, .10);
+      --radius: 24px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 90px; }
+    body {
+      margin: 0; color: var(--ink);
+      font: 16px/1.7 Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: linear-gradient(135deg, #e8f4ff 0%, #e6f4f2 42%, #eff8ee 72%, #f8f5ff 100%);
+      background-attachment: fixed;
+    }
+    img { max-width: 100%; display: block; }
+    a { color: inherit; }
+    button, input, textarea { font: inherit; }
+    .container { width: min(1120px, calc(100% - 40px)); margin-inline: auto; }
+    .site-header {
+      position: sticky; top: 0; z-index: 50;
+      background: rgba(239, 248, 250, .93); backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(205, 225, 231, .9);
+    }
+    .nav-wrap { min-height: 74px; display: flex; align-items: center; justify-content: space-between; gap: 22px; }
+    .brand { text-decoration: none; color: var(--navy); font-weight: 850; font-size: 1.08rem; letter-spacing: -.035em; }
+    .brand span { color: var(--coral); }
+    .nav-links { display: flex; align-items: center; gap: 22px; }
+    .nav-links a { color: #405c6a; text-decoration: none; font-size: .91rem; font-weight: 750; }
+    .nav-links a:hover { color: var(--coral); }
+    .nav-links .nav-cta { background: var(--navy); color: white; padding: 9px 16px; border-radius: 999px; }
+    .language-switch {
+      position: fixed; right: 18px; bottom: 18px; z-index: 100;
+      border: 0; border-radius: 999px; padding: 13px 18px; min-height: 48px;
+      background: linear-gradient(135deg, #24445a, #397b91); color: white;
+      font-weight: 850; box-shadow: 0 8px 24px rgba(36,68,90,.28); cursor: pointer;
+    }
+    .language-switch:hover { filter: brightness(1.1); transform: translateY(-1px); }
+    .menu-toggle { display: none; border: 1px solid var(--line); border-radius: 12px; background: white; color: var(--navy); padding: 9px 12px; cursor: pointer; }
+    .hero { padding: 78px 0 82px; background: linear-gradient(120deg, rgba(216,237,255,.7), rgba(220,244,235,.62), rgba(243,237,255,.45)); }
+    .hero-grid { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(250px, .75fr); grid-template-areas: "heading portrait" "intro portrait"; gap: 0 56px; align-items: center; }
+    .hero-heading { grid-area: heading; align-self: end; }
+    .hero-intro { grid-area: intro; align-self: start; }
+    .hero-grid .portrait-wrap { grid-area: portrait; }
+    .eyebrow { display: inline-flex; align-items: center; gap: 10px; text-transform: uppercase; letter-spacing: .13em; font-size: .75rem; font-weight: 850; color: var(--blue); }
+    .eyebrow::before { content: ""; width: 26px; height: 3px; border-radius: 4px; background: var(--coral); }
+    h1, h2, h3, p { margin-top: 0; }
+    h1 { color: var(--navy); font-size: clamp(2.65rem, 6vw, 4.8rem); line-height: 1.04; letter-spacing: -.06em; margin: 17px 0 20px; max-width: 700px; }
+    h1 .highlight { color: var(--coral); }
+    .hero-copy { color: #526b78; max-width: 640px; font-size: 1.08rem; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+    .button { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 48px; padding: 12px 19px; border-radius: 999px; text-decoration: none; border: 1px solid transparent; font-weight: 780; cursor: pointer; transition: transform .18s, background .18s; }
+    .button:hover { transform: translateY(-2px); }
+    .button-primary { background: var(--navy); color: white; }
+    .button-primary:hover { background: var(--blue); }
+    .button-secondary { border-color: #bfd4dc; background: rgba(255,255,255,.75); color: var(--navy); }
+    .portrait-wrap { position: relative; max-width: 390px; width: 100%; justify-self: center; }
+    .portrait-backdrop { position: absolute; inset: 16px -15px -15px 16px; background: linear-gradient(145deg, #c6e9e5, #d9e8ff, #e9defb); border-radius: 46% 46% 30px 30px; transform: rotate(3deg); }
+    .portrait { position: relative; width: 100%; aspect-ratio: 4/5; object-fit: cover; object-position: center; border-radius: 46% 46% 28px 28px; border: 8px solid white; box-shadow: var(--shadow); background: #f1e9df; }
+    .portrait-fallback { display: none; align-items: center; justify-content: center; text-align: center; padding: 24px; color: var(--navy); }
+    .photo-note { position: absolute; left: -26px; bottom: 24px; background: white; color: var(--navy); border-radius: 16px; padding: 13px 17px; box-shadow: var(--shadow); font-weight: 800; font-size: .9rem; max-width: 210px; }
+    section { padding: 78px 0; }
+    .section-head { max-width: 720px; margin-bottom: 34px; }
+    .section-head h2 { color: var(--navy); font-size: clamp(2rem, 4.3vw, 3.15rem); line-height: 1.13; letter-spacing: -.045em; margin: 12px 0; }
+    .section-head p { color: var(--muted); margin-bottom: 0; }
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .panel { padding: 28px; background: rgba(255,255,255,.91); border: 1px solid rgba(216,229,235,.95); border-radius: var(--radius); box-shadow: 0 5px 22px rgba(36,68,90,.035); }
+    .panel h3, .skill-card h3 { color: var(--navy); margin-bottom: 9px; font-size: 1.18rem; }
+    .panel p { color: var(--muted); margin-bottom: 0; }
+    .mini-icon { width: 50px; height: 50px; border-radius: 16px; display: grid; place-items: center; font-size: 1.45rem; margin-bottom: 17px; background: linear-gradient(135deg, #d9f1e9, #e0edff); }
+    .education-item + .education-item { border-top: 1px solid var(--line); margin-top: 23px; padding-top: 23px; }
+    .education-item .date { color: var(--coral); font-size: .82rem; font-weight: 850; }
+    .education-item h3 { margin: 3px 0 2px; }
+    .education-item .institution { font-weight: 700; color: #526773; margin-bottom: 7px; }
+    .skills-section { background: linear-gradient(135deg, rgba(218,237,255,.82), rgba(222,244,234,.88)); }
+    .skills-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .skill-card { background: rgba(255,255,255,.92); border: 1px solid rgba(216,229,235,.95); border-radius: var(--radius); padding: 25px; box-shadow: 0 8px 28px rgba(36,68,90,.04); }
+    .skill-icon { font-size: 1.65rem; margin-bottom: 14px; }
+    .tags { display: flex; flex-wrap: wrap; gap: 8px; padding: 0; margin: 13px 0 0; list-style: none; }
+    .tags li { border-radius: 10px; padding: 7px 10px; font-size: .86rem; font-weight: 650; color: #345766; background: #e3f4ef; }
+    .skill-card:nth-child(2) .tags li { background: #ffede4; }
+    .skill-card:nth-child(3) .tags li { background: #ece7fc; }
+    .small-note { color: var(--muted); font-size: .85rem; margin: 14px 0 0; }
+    .experience-section { background: linear-gradient(135deg, rgba(231,244,239,.82), rgba(239,235,252,.62)); }
+    .timeline { display: grid; gap: 17px; }
+    .experience-card { display: grid; grid-template-columns: 62px 1fr; gap: 19px; padding: 25px; border: 1px solid rgba(216,229,235,.95); border-radius: var(--radius); background: rgba(255,255,255,.94); }
+    .experience-icon { width: 58px; height: 58px; display: grid; place-items: center; border-radius: 18px; font-size: 1.55rem; background: #d6f0e7; }
+    .experience-card:nth-child(2) .experience-icon { background: #ffdfce; }
+    .experience-card:nth-child(3) .experience-icon { background: #e7e0fa; }
+    .type { color: var(--coral); font-size: .77rem; font-weight: 850; text-transform: uppercase; letter-spacing: .11em; }
+    .experience-card h3 { color: var(--navy); margin: 3px 0 7px; font-size: 1.2rem; }
+    .experience-card p { color: var(--muted); margin-bottom: 0; }
+    .contact-section { background: linear-gradient(125deg, #dceeff, #def3eb 58%, #edf0ff); }
+    .contact-grid { display: grid; grid-template-columns: .9fr 1.1fr; gap: 22px; align-items: start; }
+    .contact-card { border-radius: var(--radius); background: linear-gradient(145deg, #24445a, #326b80); color: white; padding: 30px; box-shadow: var(--shadow); }
+    .contact-card h3 { font-size: 1.55rem; line-height: 1.2; }
+    .contact-card > p { color: #d6e8ee; }
+    .contact-detail { border-top: 1px solid rgba(255,255,255,.2); padding: 15px 0; }
+    .contact-detail span { display: block; color: #c7e0e8; font-size: .8rem; margin-bottom: 3px; }
+    .contact-detail a { color: white; text-decoration: none; overflow-wrap: anywhere; }
+    .contact-detail a:hover { text-decoration: underline; }
+    .linkedin-link { display: inline-flex; margin-top: 12px; color: var(--navy); background: var(--peach); border-radius: 999px; padding: 10px 15px; font-weight: 800; text-decoration: none; }
+    .contact-form { display: grid; gap: 14px; }
+    label { color: var(--navy); font-weight: 750; font-size: .9rem; }
+    input, textarea { display: block; width: 100%; margin-top: 6px; padding: 13px 14px; border: 1px solid #cfdfdf; border-radius: 12px; background: white; color: var(--ink); }
+    input:focus, textarea:focus { outline: 3px solid rgba(57,123,145,.2); border-color: var(--blue); }
+    textarea { min-height: 125px; resize: vertical; }
+    .form-note { color: var(--muted); font-size: .83rem; margin: 0; }
+    .site-footer { background: #19364a; color: #d9e5e8; padding: 25px 0; font-size: .9rem; }
+    .footer-wrap { display: flex; justify-content: space-between; align-items: center; gap: 14px; flex-wrap: wrap; }
+    .footer-wrap p { margin: 0; }
+    .footer-wrap a { color: white; text-decoration: none; font-weight: 700; }
+    :focus-visible { outline: 3px solid var(--coral); outline-offset: 3px; }
+    @media (max-width: 850px) {
+      .hero-grid { grid-template-columns: minmax(0, 1.15fr) minmax(220px, .75fr); gap: 0 30px; }
+      .skills-grid { grid-template-columns: 1fr 1fr; }
+      .skill-card:last-child { grid-column: 1 / -1; }
+      .contact-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 680px) {
+      .container { width: min(100% - 30px, 1120px); }
+      .nav-wrap { min-height: 68px; }
+      .menu-toggle { display: inline-flex; gap: 8px; align-items: center; }
+      .nav-links { display: none; position: absolute; left: 0; right: 0; top: 68px; background: #eff8fa; padding: 12px 20px 20px; border-bottom: 1px solid var(--line); flex-direction: column; align-items: stretch; gap: 0; }
+      .nav-links.open { display: flex; }
+      .nav-links a { padding: 12px 8px; }
+      .nav-links .nav-cta { text-align: center; margin-top: 7px; }
+      .hero { padding: 52px 0 60px; }
+      .hero-grid { grid-template-columns: minmax(0, 1.15fr) minmax(0, .85fr); grid-template-areas: "heading portrait" "intro intro"; gap: 20px 14px; align-items: center; }
+      .hero-heading { min-width: 0; }
+      .hero-heading .eyebrow { font-size: .61rem; letter-spacing: .09em; gap: 6px; }
+      .hero-heading .eyebrow::before { width: 16px; }
+      h1 { font-size: clamp(1.45rem, 6.4vw, 2.25rem); line-height: 1.08; letter-spacing: -.045em; margin: 11px 0 0; overflow-wrap: anywhere; }
+      .hero-copy { font-size: .98rem; margin-bottom: 0; }
+      .hero-intro { grid-area: intro; }
+      .hero-actions { margin-top: 19px; }
+      .hero-actions .button { padding: 11px 15px; min-height: 44px; font-size: .9rem; }
+      .portrait-wrap { width: 100%; max-width: 240px; justify-self: end; }
+      .portrait { aspect-ratio: 4 / 4.7; border-width: 5px; border-radius: 42% 42% 22px 22px; }
+      .portrait-backdrop { inset: 8px -6px -7px 8px; border-radius: 42% 42% 22px 22px; }
+      .photo-note { left: -6px; bottom: 10px; padding: 6px 8px; font-size: .58rem; line-height: 1.2; max-width: 125px; border-radius: 8px; gap: 3px; }
+      .photo-note { left: -17px; bottom: 17px; }
+      section { padding: 60px 0; }
+      .about-grid, .skills-grid { grid-template-columns: 1fr; }
+      .skill-card:last-child { grid-column: auto; }
+      .panel, .skill-card, .contact-card { padding: 23px; }
+      .experience-card { grid-template-columns: 1fr; gap: 12px; padding: 22px; }
+      .footer-wrap { align-items: flex-start; flex-direction: column; }
+      .language-switch { right: 12px; bottom: 12px; padding: 12px 15px; }
+    }
+    @media (max-width: 380px) {
+      .hero-grid { grid-template-columns: minmax(0, 1.08fr) minmax(0, .92fr); gap: 16px 9px; }
+      .hero-heading .eyebrow { font-size: .56rem; }
+      h1 { font-size: clamp(1.35rem, 6.1vw, 1.65rem); }
+      .photo-note { left: -5px; bottom: 8px; padding: 5px 6px; font-size: .52rem; line-height: 1.2; max-width: 112px; border-radius: 7px; gap: 2px; }
+      .hero-actions { gap: 8px; }
+      .hero-actions .button { padding: 10px 12px; font-size: .84rem; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { transition: none !important; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a class="brand" href="#home">Clara Claudia <span>Surbakti</span></a>
+      <button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="navLinks" aria-label="Buka menu navigasi">☰ <span data-i18n="menu">Menu</span></button>
+      <nav class="nav-links" id="navLinks" aria-label="Navigasi utama">
+        <a href="#about" data-i18n="navAbout">Tentang Saya</a>
+        <a href="#skills" data-i18n="navSkills">Keahlian</a>
+        <a href="#experience" data-i18n="navExperience">Pengalaman</a>
+        <a class="nav-cta" href="#contact" data-i18n="navContact">Kontak</a>
+      </nav>
+    </div>
+  </header>
+
+  <button class="language-switch" id="languageSwitch" type="button" aria-label="Switch website language to English">English 🇬🇧</button>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="container hero-grid">
+        <div class="hero-heading">
+          <div class="eyebrow" data-i18n="eyebrow">Portofolio pribadi</div>
+          <h1 data-i18n="heroTitle">Belajar, berkarya, dan membantu orang lain <span class="highlight">bertumbuh.</span></h1>
+        </div>
+        <div class="portrait-wrap">
+          <div class="portrait-backdrop" aria-hidden="true"></div>
+          <img class="portrait" src="ProfileImage.jpeg" alt="Foto Clara Claudia Surbakti" onerror="this.style.display='none'; document.getElementById('portraitFallback').style.display='flex';">
+          <div id="portraitFallback" class="portrait portrait-fallback"><span data-i18n="photoFallback">Tambahkan ProfileImage.jpeg di folder yang sama dengan index.html.</span></div>
+          <div class="photo-note" data-i18n="photoNote">Mahasiswa Pendidikan Anak Usia Dini 🌱</div>
+        </div>
+        <div class="hero-intro">
+          <p class="hero-copy" data-i18n="heroCopy">Halo, saya Clara Claudia Surbakti, mahasiswa Pendidikan dan Pengajaran Anak Usia Dini di Universitas Negeri Medan. Melalui magang di taman kanak-kanak, desain busana dan menjahit, serta pengalaman di bidang pelayanan, saya mengembangkan pendekatan kerja yang kreatif, penuh perhatian, dan berorientasi pada orang lain.</p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#experience"><span data-i18n="heroButton">Lihat pengalaman saya</span> <span aria-hidden="true">↗</span></a>
+            <a class="button button-secondary" href="#contact" data-i18n="heroContact">Hubungi saya</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="container">
+        <div class="section-head">
+          <div class="eyebrow" data-i18n="aboutEyebrow">Tentang saya</div>
+          <h2 data-i18n="aboutTitle">Pembelajar yang ingin tahu dan kreatif.</h2>
+          <p data-i18n="aboutIntro">Pendidikan adalah inti perjalanan profesional saya. Pengalaman lainnya mengajarkan keterampilan praktis, kesabaran, ketelitian, dan cara bekerja dengan orang lain.</p>
+        </div>
+        <div class="about-grid">
+          <article class="panel">
+            <div class="mini-icon" aria-hidden="true">🎓</div>
+            <h3 data-i18n="educationTitle">Latar Belakang Pendidikan</h3>
+            <div class="education-item">
+              <div class="date">2024 – Sekarang</div>
+              <h3 data-i18n="degreeTitle">Pendidikan dan Pengajaran Anak Usia Dini</h3>
+              <div class="institution">Universitas Negeri Medan</div>
+              <p data-i18n="degreeDesc">Mempelajari pendidikan anak usia dini serta perkembangan, proses belajar, dan pengasuhan anak.</p>
+            </div>
+            <div class="education-item">
+              <div class="date">Juli 2019 – Juni 2022</div>
+              <h3 data-i18n="fashionTitle">Desain Busana</h3>
+              <div class="institution">SMK Negeri 10 Medan</div>
+              <p data-i18n="fashionDesc">Mempelajari pembuatan pola, teknik menjahit, jenis kain, dan desain pakaian.</p>
+            </div>
+          </article>
+          <article class="panel">
+            <div class="mini-icon" aria-hidden="true">💛</div>
+            <h3 data-i18n="profileTitle">Profil Singkat</h3>
+            <p data-i18n="profileDesc">Saya tertarik pada proses belajar dan kesejahteraan anak, serta ingin membantu menciptakan lingkungan yang ramah agar anak merasa didukung saat tumbuh. Magang di taman kanak-kanak memberi saya kesempatan untuk menghubungkan studi dengan pengalaman praktis. Saya juga memiliki dasar kreatif dari desain busana dan menjahit, serta pengalaman melayani pelanggan sebagai pramusaji. Saya menghargai kesabaran, kreativitas, tanggung jawab, dan kemauan untuk terus belajar.</p>
+            <a class="linkedin-link" href="https://www.linkedin.com/in/clara-claudia-surbakti-63253843b/" target="_blank" rel="noopener noreferrer" data-i18n="linkedinButton">Lihat LinkedIn saya ↗</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="skills-section" id="skills">
+      <div class="container">
+        <div class="section-head">
+          <div class="eyebrow" data-i18n="skillsEyebrow">Yang dapat saya tawarkan</div>
+          <h2 data-i18n="skillsTitle">Keahlian & kekuatan</h2>
+          <p data-i18n="skillsIntro">Perpaduan pembelajaran di bidang pendidikan, keterampilan kreatif, dan kemampuan berinteraksi yang dikembangkan melalui studi dan pekerjaan.</p>
+        </div>
+        <div class="skills-grid">
+          <article class="skill-card">
+            <div class="skill-icon" aria-hidden="true">🧸</div>
+            <h3 data-i18n="practicalTitle">Pendidikan & Keterampilan Praktis</h3>
+            <ul class="tags">
+              <li data-i18n="skillAssistant">Asisten pengajaran</li>
+              <li data-i18n="skillInternship">Magang di taman kanak-kanak</li>
+              <li data-i18n="skillLearning">Pembelajaran anak usia dini</li>
+              <li data-i18n="skillClassroom">Dukungan kegiatan kelas</li>
+            </ul>
+          </article>
+          <article class="skill-card">
+            <div class="skill-icon" aria-hidden="true">🪡</div>
+            <h3 data-i18n="creativeTitle">Kreativitas & Keterampilan Sosial</h3>
+            <ul class="tags">
+              <li data-i18n="skillFashion">Desain busana</li>
+              <li data-i18n="skillSewing">Menjahit</li>
+              <li data-i18n="skillPattern">Pembuatan pola</li>
+              <li data-i18n="skillCommunication">Komunikasi</li>
+              <li data-i18n="skillTeamwork">Kerja sama tim</li>
+              <li data-i18n="skillPatience">Kesabaran</li>
+              <li data-i18n="skillService">Pelayanan pelanggan</li>
+            </ul>
+          </article>
+          <article class="skill-card">
+            <div class="skill-icon" aria-hidden="true">🎨</div>
+            <h3 data-i18n="toolsTitle">Perangkat & Perangkat Lunak</h3>
+            <ul class="tags">
+              <li>Canva</li>
+              <li>Microsoft Excel</li>
+              <li data-i18n="skillAI">Alat kecerdasan buatan (AI)</li>
+              <li data-i18n="skillSewingTools">Peralatan menjahit</li>
+              <li data-i18n="skillPatternTools">Alat pembuatan pola</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="experience-section" id="experience">
+      <div class="container">
+        <div class="section-head">
+          <div class="eyebrow" data-i18n="experienceEyebrow">Perjalanan saya sejauh ini</div>
+          <h2 data-i18n="experienceTitle">Pengalaman berbeda, pelajaran berharga.</h2>
+          <p data-i18n="experienceIntro">Fokus utama saya adalah pendidikan anak usia dini, didukung pengalaman yang membantu saya berkembang secara kreatif dan profesional.</p>
+        </div>
+        <div class="timeline">
+          <article class="experience-card">
+            <div class="experience-icon" aria-hidden="true">🌱</div>
+            <div>
+              <div class="type" data-i18n="internshipType">Pendidikan & pembelajaran praktis</div>
+              <h3 data-i18n="internshipTitle">Magang di Taman Kanak-kanak</h3>
+              <p data-i18n="internshipDesc">Saya telah mengikuti beberapa program magang di taman kanak-kanak sebagai bagian dari studi Pendidikan dan Pengajaran Anak Usia Dini. Pengalaman ini memberi kesempatan untuk belajar dari para pendidik dan memahami dukungan yang dibutuhkan anak dalam lingkungan taman kanak-kanak.</p>
+            </div>
+          </article>
+          <article class="experience-card">
+            <div class="experience-icon" aria-hidden="true">🧵</div>
+            <div>
+              <div class="type" data-i18n="tailoringType">Pengalaman kreatif & praktis</div>
+              <h3 data-i18n="tailoringTitle">Menjahit & Desain Busana</h3>
+              <p data-i18n="tailoringDesc">Studi desain busana dan pengalaman menjahit membantu saya mengembangkan kreativitas, ketelitian, dan perhatian terhadap detail. Pendidikan kejuruan saya mencakup pembuatan pola, teknik menjahit, jenis kain, dan desain pakaian.</p>
+            </div>
+          </article>
+          <article class="experience-card">
+            <div class="experience-icon" aria-hidden="true">☕</div>
+            <div>
+              <div class="type" data-i18n="hospitalityType">Hospitalitas</div>
+              <h3 data-i18n="waitressTitle">Pramusaji</h3>
+              <p data-i18n="waitressDesc">Bekerja sebagai pramusaji memberi saya pengalaman melayani pelanggan dan bekerja sebagai bagian dari tim di lingkungan yang sibuk. Pengalaman ini memperkuat komunikasi, pengorganisasian, kemampuan beradaptasi, dan sikap membantu.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact-section" id="contact">
+      <div class="container">
+        <div class="section-head">
+          <div class="eyebrow" data-i18n="contactEyebrow">Mari terhubung</div>
+          <h2 data-i18n="contactTitle">Saya senang jika Anda menghubungi saya.</h2>
+          <p data-i18n="contactIntro">Untuk pertanyaan, peluang pendidikan, atau koneksi profesional, silakan hubungi saya.</p>
+        </div>
+        <div class="contact-grid">
+          <div class="contact-card">
+            <h3 data-i18n="contactCardTitle">Hubungi Clara</h3>
+            <p data-i18n="contactCardDesc">Anda dapat menghubungi saya melalui email atau terhubung melalui LinkedIn.</p>
+            <div class="contact-detail"><span data-i18n="emailLabel">Email</span><a href="mailto:clarasurbakti72@gmail.com">clarasurbakti72@gmail.com</a></div>
+            <div class="contact-detail"><span>LinkedIn</span><a href="https://www.linkedin.com/in/clara-claudia-surbakti-63253843b/" target="_blank" rel="noopener noreferrer">Clara Claudia Surbakti ↗</a></div>
+          </div>
+          <div class="panel">
+            <h3 data-i18n="formTitle">Kirim email</h3>
+            <form class="contact-form" id="contactForm">
+              <label for="senderName"><span data-i18n="nameLabel">Nama Anda</span><input id="senderName" name="senderName" autocomplete="name" required placeholder="Masukkan nama Anda" data-i18n-placeholder="namePlaceholder"></label>
+              <label for="senderEmail"><span data-i18n="senderEmailLabel">Email Anda</span><input id="senderEmail" name="senderEmail" type="email" autocomplete="email" required placeholder="anda@example.com" data-i18n-placeholder="emailPlaceholder"></label>
+              <label for="message"><span data-i18n="messageLabel">Pesan</span><textarea id="message" name="message" required placeholder="Tulis pesan Anda di sini" data-i18n-placeholder="messagePlaceholder"></textarea></label>
+              <button class="button button-primary" type="submit" data-i18n="formButton">Siapkan email ↗</button>
+              <p class="form-note" data-i18n="formNote">Tombol ini membuka aplikasi email Anda dengan pesan yang sudah disiapkan.</p>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer class="site-footer">
+    <div class="container footer-wrap">
+      <p>© <span id="year"></span> Clara Claudia Surbakti · <span data-i18n="footerText">Portofolio Pribadi</span></p>
+      <a href="#home" data-i18n="backTop">Kembali ke atas ↑</a>
+    </div>
+  </footer>
+
+  <script>
+    const translations = {
+      id: {
+        pageTitle: 'Clara Claudia Surbakti | Portofolio',
+        menu: 'Menu', navAbout: 'Tentang Saya', navSkills: 'Keahlian', navExperience: 'Pengalaman', navContact: 'Kontak',
+        eyebrow: 'Portofolio pribadi',
+        heroTitle: 'Belajar, berkarya, dan membantu orang lain <span class="highlight">bertumbuh.</span>',
+        heroCopy: 'Halo, saya Clara Claudia Surbakti, mahasiswa Pendidikan dan Pengajaran Anak Usia Dini di Universitas Negeri Medan. Melalui magang di taman kanak-kanak, desain busana dan menjahit, serta pengalaman di bidang pelayanan, saya mengembangkan pendekatan kerja yang kreatif, penuh perhatian, dan berorientasi pada orang lain.',
+        heroButton: 'Lihat pengalaman saya', heroContact: 'Hubungi saya', photoFallback: 'Tambahkan ProfileImage.jpeg di folder yang sama dengan index.html.', photoNote: 'Mahasiswa Pendidikan Anak Usia Dini 🌱',
+        aboutEyebrow: 'Tentang saya', aboutTitle: 'Pembelajar yang ingin tahu dan kreatif.',
+        aboutIntro: 'Pendidikan adalah inti perjalanan profesional saya. Pengalaman lainnya mengajarkan keterampilan praktis, kesabaran, ketelitian, dan cara bekerja dengan orang lain.',
+        educationTitle: 'Latar Belakang Pendidikan', degreeTitle: 'Pendidikan dan Pengajaran Anak Usia Dini', degreeDesc: 'Mempelajari pendidikan anak usia dini serta perkembangan, proses belajar, dan pengasuhan anak.',
+        fashionTitle: 'Desain Busana', fashionDesc: 'Mempelajari pembuatan pola, teknik menjahit, jenis kain, dan desain pakaian.',
+        profileTitle: 'Profil Singkat', profileDesc: 'Saya tertarik pada proses belajar dan kesejahteraan anak, serta ingin membantu menciptakan lingkungan yang ramah agar anak merasa didukung saat tumbuh. Magang di taman kanak-kanak memberi saya kesempatan untuk menghubungkan studi dengan pengalaman praktis. Saya juga memiliki dasar kreatif dari desain busana dan menjahit, serta pengalaman melayani pelanggan sebagai pramusaji. Saya menghargai kesabaran, kreativitas, tanggung jawab, dan kemauan untuk terus belajar.',
+        linkedinButton: 'Lihat LinkedIn saya ↗', skillsEyebrow: 'Yang dapat saya tawarkan', skillsTitle: 'Keahlian & kekuatan',
+        skillsIntro: 'Perpaduan pembelajaran di bidang pendidikan, keterampilan kreatif, dan kemampuan berinteraksi yang dikembangkan melalui studi dan pekerjaan.',
+        practicalTitle: 'Pendidikan & Keterampilan Praktis', skillAssistant: 'Asisten pengajaran', skillInternship: 'Magang di taman kanak-kanak', skillLearning: 'Pembelajaran anak usia dini', skillClassroom: 'Dukungan kegiatan kelas',
+        creativeTitle: 'Kreativitas & Keterampilan Sosial', skillFashion: 'Desain busana', skillSewing: 'Menjahit', skillPattern: 'Pembuatan pola', skillCommunication: 'Komunikasi', skillTeamwork: 'Kerja sama tim', skillPatience: 'Kesabaran', skillService: 'Pelayanan pelanggan',
+        toolsTitle: 'Perangkat & Perangkat Lunak', skillAI: 'Alat kecerdasan buatan (AI)', skillSewingTools: 'Peralatan menjahit', skillPatternTools: 'Alat pembuatan pola',
+        experienceEyebrow: 'Perjalanan saya sejauh ini', experienceTitle: 'Pengalaman berbeda, pelajaran berharga.',
+        experienceIntro: 'Fokus utama saya adalah pendidikan anak usia dini, didukung pengalaman yang membantu saya berkembang secara kreatif dan profesional.',
+        internshipType: 'Pendidikan & pembelajaran praktis', internshipTitle: 'Magang di Taman Kanak-kanak', internshipDesc: 'Saya telah mengikuti beberapa program magang di taman kanak-kanak sebagai bagian dari studi Pendidikan dan Pengajaran Anak Usia Dini. Pengalaman ini memberi kesempatan untuk belajar dari para pendidik dan memahami dukungan yang dibutuhkan anak dalam lingkungan taman kanak-kanak.',
+        tailoringType: 'Pengalaman kreatif & praktis', tailoringTitle: 'Menjahit & Desain Busana', tailoringDesc: 'Studi desain busana dan pengalaman menjahit membantu saya mengembangkan kreativitas, ketelitian, dan perhatian terhadap detail. Pendidikan kejuruan saya mencakup pembuatan pola, teknik menjahit, jenis kain, dan desain pakaian.',
+        hospitalityType: 'Hospitalitas', waitressTitle: 'Pramusaji', waitressDesc: 'Bekerja sebagai pramusaji memberi saya pengalaman melayani pelanggan dan bekerja sebagai bagian dari tim di lingkungan yang sibuk. Pengalaman ini memperkuat komunikasi, pengorganisasian, kemampuan beradaptasi, dan sikap membantu.',
+        contactEyebrow: 'Mari terhubung', contactTitle: 'Saya senang jika Anda menghubungi saya.', contactIntro: 'Untuk pertanyaan, peluang pendidikan, atau koneksi profesional, silakan hubungi saya.',
+        contactCardTitle: 'Hubungi Clara', contactCardDesc: 'Anda dapat menghubungi saya melalui email atau terhubung melalui LinkedIn.', emailLabel: 'Email',
+        formTitle: 'Kirim email', nameLabel: 'Nama Anda', senderEmailLabel: 'Email Anda', messageLabel: 'Pesan',
+        namePlaceholder: 'Masukkan nama Anda', emailPlaceholder: 'anda@example.com', messagePlaceholder: 'Tulis pesan Anda di sini',
+        formButton: 'Siapkan email ↗', formNote: 'Tombol ini membuka aplikasi email Anda dengan pesan yang sudah disiapkan.',
+        footerText: 'Portofolio Pribadi', backTop: 'Kembali ke atas ↑',
+        languageLabel: 'Switch website language to English'
+      },
+      en: {
+        pageTitle: 'Clara Claudia Surbakti | Portfolio',
+        menu: 'Menu', navAbout: 'About Me', navSkills: 'Skills', navExperience: 'Experience', navContact: 'Contact',
+        eyebrow: 'Personal portfolio',
+        heroTitle: 'Learning, creating, and helping others <span class="highlight">grow.</span>',
+        heroCopy: "Hello, I'm Clara Claudia Surbakti, an Early Childhood Education and Teaching student at Universitas Negeri Medan. Through kindergarten internships, fashion design and tailoring, and hospitality experience, I've been building a thoughtful, creative, and people-focused approach to my work.",
+        heroButton: 'Explore my experience', heroContact: 'Get in touch', photoFallback: 'Place ProfileImage.jpeg in the same folder as index.html.', photoNote: 'Early Childhood Education student 🌱',
+        aboutEyebrow: 'About me', aboutTitle: 'A curious learner with a creative side.',
+        aboutIntro: 'Education is at the heart of my professional journey. My other experiences have taught me practical skills, patience, attention to detail, and how to work with people.',
+        educationTitle: 'Educational Background', degreeTitle: 'Early Childhood Education and Teaching', degreeDesc: 'Studying early childhood education, including children’s development, learning, and care.',
+        fashionTitle: 'Fashion Design', fashionDesc: 'Studied pattern making, sewing techniques, fabric types, and garment design.',
+        profileTitle: 'Brief Profile', profileDesc: "I am interested in children's learning and wellbeing, and in helping create a welcoming environment where children feel supported as they grow. Kindergarten internships have given me opportunities to connect my studies with practical experience. I also bring a creative foundation from fashion design and tailoring, alongside customer-service experience as a waitress. I value patience, creativity, responsibility, and continuous learning.",
+        linkedinButton: 'View my LinkedIn ↗', skillsEyebrow: 'What I bring', skillsTitle: 'Skills & strengths',
+        skillsIntro: 'A mix of education-related learning, creative craft, and people skills developed through study and work.',
+        practicalTitle: 'Education & Practical Skills', skillAssistant: 'Assistant teaching', skillInternship: 'Kindergarten internships', skillLearning: 'Early childhood learning', skillClassroom: 'Classroom activity support',
+        creativeTitle: 'Creative & People Skills', skillFashion: 'Fashion design', skillSewing: 'Sewing', skillPattern: 'Pattern making', skillCommunication: 'Communication', skillTeamwork: 'Teamwork', skillPatience: 'Patience', skillService: 'Customer service',
+        toolsTitle: 'Tools & Software', skillAI: 'Artificial intelligence tools (AI)', skillSewingTools: 'Sewing equipment', skillPatternTools: 'Pattern-making tools',
+        experienceEyebrow: 'My journey so far', experienceTitle: 'Different experiences, valuable lessons.',
+        experienceIntro: 'My main focus is early childhood education, supported by experiences that have helped me grow creatively and professionally.',
+        internshipType: 'Education & practical learning', internshipTitle: 'Kindergarten Internships', internshipDesc: 'I have completed several kindergarten internships as part of my Early Childhood Education and Teaching studies. These experiences have given me opportunities to learn from educators and understand how children are supported in a kindergarten setting.',
+        tailoringType: 'Creative & practical experience', tailoringTitle: 'Tailoring & Fashion Design', tailoringDesc: 'My fashion design studies and tailoring experience have helped me develop creativity, precision, and attention to detail. My vocational studies included pattern making, sewing techniques, fabric types, and garment design.',
+        hospitalityType: 'Hospitality', waitressTitle: 'Waitress', waitressDesc: 'Working as a waitress gave me experience serving customers and working as part of a team in a busy environment. This experience strengthened my communication, organisation, adaptability, and helpful attitude.',
+        contactEyebrow: "Let's connect", contactTitle: "I'd love to hear from you.", contactIntro: 'For questions, educational opportunities, or professional connections, please feel free to get in touch.',
+        contactCardTitle: 'Contact Clara', contactCardDesc: 'You can reach me by email or connect with me on LinkedIn.', emailLabel: 'Email',
+        formTitle: 'Send an email', nameLabel: 'Your name', senderEmailLabel: 'Your email', messageLabel: 'Message',
+        namePlaceholder: 'Enter your name', emailPlaceholder: 'you@example.com', messagePlaceholder: 'Write your message here',
+        formButton: 'Prepare email ↗', formNote: 'This opens your email application with the message prepared.',
+        footerText: 'Personal Portfolio', backTop: 'Back to top ↑',
+        languageLabel: 'Ganti bahasa situs ke Bahasa Indonesia'
+      }
+    };
+
+    let currentLanguage = 'id';
+    const languageSwitch = document.getElementById('languageSwitch');
+
+    function setLanguage(language) {
+      currentLanguage = language;
+      document.documentElement.lang = language;
+      document.title = translations[language].pageTitle;
+      document.querySelectorAll('[data-i18n]').forEach(element => {
+        const key = element.dataset.i18n;
+        if (translations[language][key] !== undefined) element.innerHTML = translations[language][key];
+      });
+      document.querySelectorAll('[data-i18n-placeholder]').forEach(element => {
+        const key = element.dataset.i18nPlaceholder;
+        if (translations[language][key] !== undefined) element.placeholder = translations[language][key];
+      });
+      languageSwitch.textContent = language === 'id' ? 'English 🇬🇧' : 'Bahasa Indonesia 🇮🇩';
+      languageSwitch.setAttribute('aria-label', translations[language].languageLabel);
+      document.getElementById('menuToggle').setAttribute('aria-label', language === 'id' ? 'Buka menu navigasi' : 'Open navigation menu');
+    }
+
+    languageSwitch.addEventListener('click', () => setLanguage(currentLanguage === 'id' ? 'en' : 'id'));
+
+    const menuToggle = document.getElementById('menuToggle');
+    const navLinks = document.getElementById('navLinks');
+    menuToggle.addEventListener('click', () => {
+      const open = navLinks.classList.toggle('open');
+      menuToggle.setAttribute('aria-expanded', String(open));
+      menuToggle.querySelector('span').textContent = open ? (currentLanguage === 'id' ? 'Tutup' : 'Close') : translations[currentLanguage].menu;
+      menuToggle.firstChild.textContent = open ? '✕ ' : '☰ ';
+    });
+    navLinks.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
+      navLinks.classList.remove('open');
+      menuToggle.setAttribute('aria-expanded', 'false');
+      menuToggle.querySelector('span').textContent = translations[currentLanguage].menu;
+      menuToggle.firstChild.textContent = '☰ ';
+    }));
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    document.getElementById('contactForm').addEventListener('submit', event => {
+      event.preventDefault();
+      const name = document.getElementById('senderName').value.trim();
+      const email = document.getElementById('senderEmail').value.trim();
+      const message = document.getElementById('message').value.trim();
+      const subjectText = currentLanguage === 'id' ? 'Pesan dari situs portofolio: ' : 'Portfolio enquiry from ';
+      const bodyText = currentLanguage === 'id' ? 'Nama: ' : 'From: ';
+      const replyText = currentLanguage === 'id' ? '\nEmail balasan: ' : '\nReply to: ';
+      const subject = encodeURIComponent(subjectText + name);
+      const body = encodeURIComponent(bodyText + name + replyText + email + '\n\n' + message);
+      window.location.href = 'mailto:clarasurbakti72@gmail.com?subject=' + subject + '&body=' + body;
+    });
+  </script>
+</body>
+</html>
